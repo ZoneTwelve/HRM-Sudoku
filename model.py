@@ -178,7 +178,8 @@ class HRMACTInner(nn.Module):
         if hasattr(self, 'q_act_head'):
             if self.q_act_head.weight.numel() > 0: # Check if parameter is initialized
                 nn.init.zeros_(self.q_act_head.weight)
-                nn.init.constant_(self.q_act_head.bias, -5.0)
+                # FIX: Initialize bias to 0.0 to encourage exploration
+                nn.init.zeros_(self.q_act_head.bias)
 
 
     def forward(self, hidden_states, inputs):
