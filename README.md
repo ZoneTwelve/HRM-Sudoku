@@ -1,29 +1,44 @@
 # HRMACT Sudoku Solver
 
-A PyTorch implementation of the **Hierarchical Reasoning Model** with **Adaptive Computation Time (ACT)**. tailored for solving Sudoku puzzles using hierarchical abstract reasoning.
+A PyTorch implementation of the **Hierarchical Reasoning Model with Adaptive Computation Time (HRMACT)**, tailored for solving Sudoku puzzles using hierarchical abstract reasoning.
 
 ## Highlights
 
-- Dual-mode hierarchical reasoning with **high-level planning** and **low-level detail**, inspired by HRM’s brain-like architecture ([sapientinc/HRM](https://github.com/sapientinc/HRM/tree/main)).
-- **Adaptive Computation Time (ACT)** enables the model to dynamically decide when to halt reasoning.
-- **Efficient training** using curriculum learning across Sudoku difficulty levels.
-- Lightweight implementation delivers strong performance even with limited data.
-- Built-in **CLI interface** modeled after Tanmay Bakshi’s Swift implementation ([tanmay-bakshi/HierarchicalReasoningModel](https://github.com/tanmay-bakshi/HierarchicalReasoningModel)).
+* Dual-mode hierarchical reasoning with **high-level planning** and **low-level detail**, inspired by HRM’s brain-like architecture ([sapientinc/HRM](https://github.com/sapientinc/HRM/tree/main)).
+* **Adaptive Computation Time (ACT)** enables the model to dynamically decide when to halt reasoning.
+* **Efficient training** using curriculum learning across Sudoku difficulty levels.
+* Lightweight implementation delivers strong performance even with limited data.
+* Built-in **CLI interface** modeled after Tanmay Bakshi’s Swift implementation ([tanmay-bakshi/HierarchicalReasoningModel](https://github.com/tanmay-bakshi/HierarchicalReasoningModel)).
+
+## Hugging Face Model
+
+For pretrained checkpoints and evaluation tools, visit the Hugging Face model page:
+
+👉 [ZoneTwelve/HRM-Sudoku](https://huggingface.co/ZoneTwelve/HRM-Sudoku)
+
+This repository hosts checkpoints for the Hierarchical Reasoning Model with Adaptive Computation Time (HRMACT), trained on Sudoku puzzles.
+
+* Training steps: 3,000
+* Batch size: 512
+* Total training time: \~18 hours
+* Checkpoint format: `.safetensors`
+
+📌 **Note**: The original HRM paper recommends training for **10,000+ steps** for best performance. These checkpoints are intended as a lightweight, educational reference.
 
 ## Prerequisites
 
 Ensure you have:
 
-- Python 3.8+
-- PyTorch (with MPS support for Apple Silicon, or CUDA for GPU users)
-- `numpy`
-- `safetensors`
+* Python 3.8+
+* PyTorch (with MPS support for Apple Silicon, or CUDA for GPU users)
+* `numpy`
+* `safetensors`
 
 Install dependencies:
 
 ```bash
 pip install -r requirements.txt
-````
+```
 
 ## Usage
 
@@ -53,7 +68,6 @@ Arguments:
 * `checkpoint`: Path to a saved model checkpoint (`.safetensors`).
 * `difficulty`: One of `very-easy`, `easy`, `medium`, `hard`, `extreme`.
 
-
 ## Architecture
 
 * **Model (`model.py`)**
@@ -61,9 +75,9 @@ Arguments:
 
 * **Training (`train.py`)**
 
-  * Cross-entropy loss on blank Sudoku cells.
-  * Q-learning–style loss for the halting policy.
-  * Curriculum learning: training gradually shifts from easy to harder puzzles.
+  * Cross-entropy loss on blank Sudoku cells
+  * Q-learning–style loss for the halting policy
+  * Curriculum learning: training gradually shifts from easy to harder puzzles
 
 * **Generation (`sudoku.py`)**
   Generates Sudoku puzzles with guaranteed unique solutions at chosen difficulty levels.
@@ -106,8 +120,6 @@ This repo is a **lightweight educational implementation**. For large-scale bench
 
 ## Citation
 
-If you use this project in academic work, please cite:
-
 ```bibtex
 @misc{wang2025hierarchicalreasoningmodel,
       title={Hierarchical Reasoning Model},
@@ -119,7 +131,3 @@ If you use this project in academic work, please cite:
       url={https://arxiv.org/abs/2506.21734},
 }
 ```
-
-## License
-
-Apache License 2.0.
