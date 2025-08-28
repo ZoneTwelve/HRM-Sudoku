@@ -1,4 +1,5 @@
 torch
 numpy
 safetensors
-packagingadam-atan2-pytorch
+packaging
+adam-atan2-pytorch
