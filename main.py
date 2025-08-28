@@ -70,8 +70,6 @@ def train():
             steps_since_graduation = 0
             batch.graduate()
 
-        print()
-
 def infer(checkpoint_path, difficulty_str):
     # Setup device
     device = torch.device("mps")

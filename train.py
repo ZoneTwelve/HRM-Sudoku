@@ -30,7 +30,6 @@ def sudoku_loss(model, hidden_states, board_inputs, board_targets, segments):
     # Q-ACT loss
     next_segments = segments + 1
     is_last_segment = next_segments >= config.act.halt_max_steps
-    print(f"Last segment: {is_last_segment}, next_segments: {next_segments}, config.act.halt_max_steps: {config.act.halt_max_steps}")
 
     is_halted = is_last_segment | (q_act_halt_logits > q_act_continue_logits)
 
